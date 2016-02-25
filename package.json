@@ -1,0 +1,27 @@
+{
+  "name": "nodebb-plugin-file-uploader",
+  "version": "1.0.0",
+  "description": "This nodebb plugin provides you the feature of uploading files to server storage or aws s3 in a resumable manner.",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swangui/nodebb-plugin-file-uploader.git"
+  },
+  "keywords": [
+    "nodebb",
+    "plugin",
+    "file",
+    "uploader",
+    "aws",
+    "s3"
+  ],
+  "author": "Samuel Wang <dev.swang@gmail.com> (http://vrplayer.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/swangui/nodebb-plugin-file-uploader/issues"
+  },
+  "homepage": "https://github.com/swangui/nodebb-plugin-file-uploader#readme"
+}
