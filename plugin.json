@@ -1,0 +1,24 @@
+{
+    "url": "https://github.com/swangui/nodebb-plugin-file-uploader",
+    "library": "./index.js",
+    "staticDirs": {
+        "images": "public/images",
+        "styles": "public/stylesheets",
+        "js": "public/js"
+    },
+    "less": [
+        "public/stylesheets/default.less"
+    ],
+    "hooks": [
+        { "hook": "filter:controllers.topic.get", "method": "decorate" }
+    ],
+    "scripts": [
+        "public/js/client.js"
+    ],
+    "acpScripts": [
+        "public/js/admin.js"
+    ],
+    "languages": "public/languages",
+    "defaultLang": "en_GB",
+    "templates": "templates"
+}

@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/swangui/nodebb-plugin-file-uploader/issues"
   },
-  "homepage": "https://github.com/swangui/nodebb-plugin-file-uploader#readme"
+  "homepage": "https://github.com/swangui/nodebb-plugin-file-uploader#readme",
+  "nbbpm": {
+    "compatibility": "~0.9.2"
+  }
 }
