@@ -1,5 +1,5 @@
 {
-    "url": "https://github.com/swangui/nodebb-plugin-file-uploader",
+    "url": "https://github.com/swangui/nodebb-plugin-topic-attachments",
     "library": "./index.js",
     "staticDirs": {
         "images": "public/images",
