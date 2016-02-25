@@ -1,18 +1,21 @@
 {
-  "name": "nodebb-plugin-file-uploader",
+  "name": "nodebb-plugin-topic-attachments",
   "version": "1.0.0",
-  "description": "This nodebb plugin provides you the feature of uploading files to server storage or aws s3 in a resumable manner.",
+  "description": "This nodebb plugin allows you attach files to a topic and store them in your server storage or aws s3 in a resumable manner.",
   "main": "index.js",
   "scripts": {
     "test": "grunt test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/swangui/nodebb-plugin-file-uploader.git"
+    "url": "git+https://github.com/swangui/nodebb-plugin-topic-attachments.git"
   },
   "keywords": [
     "nodebb",
     "plugin",
+    "posts",
+    "topic",
+    "attachments",
     "file",
     "uploader",
     "aws",
@@ -21,7 +24,10 @@
   "author": "Samuel Wang <dev.swang@gmail.com> (http://vrplayer.io)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/swangui/nodebb-plugin-file-uploader/issues"
+    "url": "https://github.com/swangui/nodebb-plugin-topic-attachments/issues"
   },
-  "homepage": "https://github.com/swangui/nodebb-plugin-file-uploader#readme"
+  "homepage": "https://github.com/swangui/nodebb-plugin-topic-attachments#readme",
+  "nbbpm": {
+    "compatibility": "~0.9.2"
+  }
 }
