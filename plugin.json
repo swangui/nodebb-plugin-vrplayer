@@ -10,14 +10,16 @@
         "public/stylesheets/default.less"
     ],
     "hooks": [
-        { "hook": "filter:controllers.topic.get", "method": "decorate" }
+        { "hook": "static:app.load", "method": "onLoad" },
+        { "hook": "filter:controllers.topic.get", "method": "decorate" },
+        { "hook": "filter:admin.header.build", "method": "admin.menu" }
     ],
     "scripts": [
         "public/js/evaporate.js",
-        "public/js/client.js"
+        "public/js/client.js",
+        "public/js/admin.js"
     ],
     "acpScripts": [
-        "public/js/admin.js"
     ],
     "languages": "public/languages",
     "defaultLang": "en_GB",

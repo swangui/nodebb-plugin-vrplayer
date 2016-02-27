@@ -16,6 +16,7 @@
     "posts",
     "topic",
     "attachments",
+    "thumbnails",
     "file",
     "uploader",
     "aws",
