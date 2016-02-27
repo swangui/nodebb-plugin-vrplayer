@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    
+      <title>Evaporate Example</title>
+    
+      <style>
+         
+      </style>
+    
+   
+      <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+      <script language="javascript" type="text/javascript" src="../evaporate.js"></script>
+   
+   </head>
+   <body>
+      
+      <div>
+         <input type="file" id="files"  multiple />
+      <div>
+            
+      
+      <script language="javascript">
+         var config = {
+             need_approval: true,
+             allowed_types: ['mp4', 'png', 'gif', 'jpg'],
+             storage: 'aws', //can be local too
+             aws_url: 's3-website-ap-northeast-1.amazonaws.com',
+             aws_key: 'AKIAIUN3PU4OKAFYLRIQ',
+             bucket: 'vrplayer.io/vrbank',
+         };
+      
+         var files;
+         
+         var _e_ = new Evaporate($.extend({
+            signerUrl: '/sign_auth',
+         }));
+      
+         $('#files').change(function(evt){
+            files = evt.target.files;
+            
+            for (var i = 0; i < files.length; i++){
+            
+               _e_.add({
+                  name: 'test_' + Math.floor(1000000000*Math.random()),
+                  file: files[i],
+                  notSignedHeadersAtInitiate: {
+                     'Cache-Control': 'max-age=3600'
+                  },
+                  xAmzHeadersAtInitiate : {
+                     'x-amz-acl': 'public-read'
+                  },
+                  signParams: {
+                     foo: 'bar',
+                     fooFunction: function() {
+                       return 'bar';
+                     }
+                  },
+                  signHeaders: {
+                    fooHeaderFunction: function() {
+                      return 'bar'
+                    },
+                    fooHeader: 'bar'
+                  },
+                  beforeSigner: function(xhr) {
+                    var requestDate = (new Date()).toISOString();
+                    xhr.setRequestHeader('Request-Header', requestDate);
+                  },
+                  complete: function(){
+                     console.log('complete................yay!');
+                  },
+                  progress: function(progress){
+                     console.log('making progress: ' + progress);
+                  }
+               });
+            }
+            
+            $(evt.target).val('');
+            
+         });
+      
+      </script>
+
+   </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
