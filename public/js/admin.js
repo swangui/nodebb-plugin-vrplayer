@@ -1,15 +1,15 @@
 define('admin/plugins/topic-attachments', ['settings'], function(Settings) {
     var topicAttachments = {};
-    
+/*   
     topicAttachments.init = function() {
         Settings.load('topic-attachments',
                       $('.topic-attachments-settings'),
                       function(err, settings) {
             var defaults = {
-                'isThumbnailsEnabled': false,
-                'isAttachmentsEnabled': false,
-                'isApprovalRequired': true,
-                'isAWSS3Enabled': true,
+                'isThumbnailsEnabled': 0,
+                'isAttachmentsEnabled': 0,
+                'isApprovalRequired': 1,
+                'isAWSS3Enabled': 1,
                 'AWSS3AccessKey': '',
                 'AWSS3SecretKey': '',
                 'AWSS3Buckect': '',
@@ -20,7 +20,7 @@ define('admin/plugins/topic-attachments', ['settings'], function(Settings) {
                 'attachmentAllowedFormats': 'mp4,zip,png,gif,jpg',
                 'attachmentMaxNum': 1,
             };
-    
+
             // Set defaults
             for(var setting in defaults) {
                 if (!settings.hasOwnProperty(setting)) {
@@ -49,6 +49,6 @@ define('admin/plugins/topic-attachments', ['settings'], function(Settings) {
             });
         });
     };
-    
+*/
     return topicAttachments;
 });

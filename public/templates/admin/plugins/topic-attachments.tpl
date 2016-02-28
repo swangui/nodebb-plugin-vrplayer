@@ -8,25 +8,25 @@
             <div class="col-lg-12">
               <div class="form-group">
                 <label for="isThumbnailsEnabled">
-                  <input type="checkbox" name="isThumbnailsEnabled" id="isThumbnailsEnabled" />
+                  <input type="checkbox" data-key="isThumbnailsEnabled" id="isThumbnailsEnabled" />
                   Enable topic thumbnails
                 </label>
               </div>
               <div class="form-group">
                 <label for="isAttachmentsEnabled">
-                  <input type="checkbox" name="isAttachmentsEnabled" id="isAttachmentsEnabled" />
+                  <input type="checkbox" data-key="isAttachmentsEnabled" id="isAttachmentsEnabled" />
                   Enable topic attachments
                 </label>
               </div>
               <div class="form-group">
                 <label for="isApprovalRequired">
-                  <input type="checkbox" name="isApprovalRequired" id="isApprovalRequired" />
+                  <input type="checkbox" data-key="isApprovalRequired" id="isApprovalRequired" />
                   Approval is required before attachment being publicly accessible
                 </label>
               </div>
               <div class="form-group">
                 <label for="isAWSS3Enabled">
-                  <input type="checkbox" name="isAWSS3Enabled" id="isAWSS3Enabled" checked readonly />
+                  <input type="checkbox" data-key="isAWSS3Enabled" id="isAWSS3Enabled" checked readonly />
                   Enable AWS S3
                 </label>
               </div>
@@ -42,19 +42,19 @@
               <div class="form-group">
                 <label for="AWSS3AccessKey">
                   AWSAccessKeyId
-                  <input type="text" name="AWSS3AccessKey" id="AWSS3AccessKey" />
+                  <input type="text" data-key="AWSS3AccessKey" id="AWSS3AccessKey" />
                 </label>
               </div>
               <div class="form-group">
                 <label for="AWSS3SecretKey">
                   AWSSecretKey
-                  <input type="text" name="AWSS3SecretKey" id="AWSS3SecretKey" />
+                  <input type="text" data-key="AWSS3SecretKey" id="AWSS3SecretKey" />
                 </label>
               </div>
               <div class="form-group">
                 <label for="AWSS3Buckect">
                   Bucket
-                  <input type="text" name="AWSS3Buckect" id="AWSS3Buckect" />
+                  <input type="text" data-key="AWSS3Buckect" id="AWSS3Buckect" />
                 </label>
               </div>
             </div>
@@ -69,25 +69,25 @@
               <div class="form-group">
                 <label for="thumbnailAllowedFormats">
                   Allowed file formats
-                  <input type="text" name="thumbnailAllowedFormats" id="thumbnailAllowedFormats" />
+                  <input type="text" data-key="thumbnailAllowedFormats" id="thumbnailAllowedFormats" />
                 </label>
               </div>
               <div class="form-group">
                 <label for="thumbnailWidth">
                   Thumbnail width
-                  <input type="text" name="thumbnailWidth" id="thumbnailWidth" />
+                  <input type="text" data-key="thumbnailWidth" id="thumbnailWidth" />
                 </label>
               </div>
               <div class="form-group">
                 <label for="thumbnailHeight">
                   Thumbnail height
-                  <input type="text" name="thumbnailHeight" id="thumbnailHeight" />
+                  <input type="text" data-key="thumbnailHeight" id="thumbnailHeight" />
                 </label>
               </div>
               <div class="form-group">
                 <label for="thumbnailMaxNum">
                   Max number of thumbnails
-                  <input type="text" name="thumbnailMaxNum" id="thumbnailMaxNum" readonly />
+                  <input type="text" data-key="thumbnailMaxNum" id="thumbnailMaxNum" readonly />
                 </label>
               </div>
             </div>
@@ -102,13 +102,13 @@
               <div class="form-group">
                 <label for="attachmentAllowedFormats">
                   Allowed file formats
-                  <input type="text" name="attachmentAllowedFormats" id="attachmentAllowedFormats" />
+                  <input type="text" data-key="attachmentAllowedFormats" id="attachmentAllowedFormats" />
                 </label>
               </div>
               <div class="form-group">
                 <label for="attachmentMaxNum">
                   Max number of attachments
-                  <input type="text" name="attachmentMaxNum" id="attachmentMaxNum" readonly />
+                  <input type="text" data-key="attachmentMaxNum" id="attachmentMaxNum" readonly />
                 </label>
               </div>
             </div>
@@ -159,3 +159,19 @@
     </div>
   </div>
 </div>
+
+<script>
+    require(['settings'], function (settings) {
+        var plugin = {id:'topic-attachments'};
+        var wrapper = $('.topic-attachments-settings');
+        settings.sync(plugin.id, wrapper, function(){
+            console.log(settings.get());
+        });
+        $('#save').click(function(event) {
+            event.preventDefault();
+            settings.persist(plugin.id, wrapper, function(){
+                socket.emit('admin.settings.syncTopicAttachments');
+            });
+        });
+    });
+</script>
