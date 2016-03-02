@@ -1,5 +1,5 @@
 {
-  "name": "nodebb-plugin-topic-attachments",
+  "name": "nodebb-plugin-vrplayer",
   "version": "1.0.0",
   "description": "This nodebb plugin allows you attach files to a topic and store them in your server storage or aws s3 in a resumable manner.",
   "main": "index.js",
@@ -8,16 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/swangui/nodebb-plugin-topic-attachments.git"
+    "url": "git+https://github.com/swangui/nodebb-plugin-vrplayer.git"
   },
   "keywords": [
     "nodebb",
     "plugin",
     "posts",
     "topic",
-    "attachments",
-    "thumbnails",
-    "file",
+    "video",
+    "vrplayer",
+    "vr",
     "uploader",
     "aws",
     "s3"
@@ -25,9 +25,9 @@
   "author": "Samuel Wang <dev.swang@gmail.com> (http://vrplayer.io)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/swangui/nodebb-plugin-topic-attachments/issues"
+    "url": "https://github.com/swangui/nodebb-plugin-vrplayer/issues"
   },
-  "homepage": "https://github.com/swangui/nodebb-plugin-topic-attachments#readme",
+  "homepage": "https://github.com/swangui/nodebb-plugin-vrplayer#readme",
   "nbbpm": {
     "compatibility": "~0.9.2"
   }

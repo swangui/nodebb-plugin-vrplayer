@@ -1,23 +1,11 @@
 <div class="row">
   <div class="col-lg-9">
-    <form class="form topic-attachments-settings">
+    <form class="form vrplayer-settings">
       <div class="panel panel-default">
         <div class="panel-heading">General Settings</div>
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <div class="form-group">
-                <label for="isThumbnailsEnabled">
-                  <input type="checkbox" data-key="isThumbnailsEnabled" id="isThumbnailsEnabled" />
-                  Enable topic thumbnails
-                </label>
-              </div>
-              <div class="form-group">
-                <label for="isAttachmentsEnabled">
-                  <input type="checkbox" data-key="isAttachmentsEnabled" id="isAttachmentsEnabled" />
-                  Enable topic attachments
-                </label>
-              </div>
               <div class="form-group">
                 <label for="isApprovalRequired">
                   <input type="checkbox" data-key="isApprovalRequired" id="isApprovalRequired" />
@@ -62,14 +50,14 @@
         </div>
       </div>
       <div class="panel panel-default">
-        <div class="panel-heading">Topic Thumbnails</div>
+        <div class="panel-heading">vrplayer Thumbnail</div>
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="thumbnailAllowedFormats">
-                  Allowed file formats
-                  <input type="text" data-key="thumbnailAllowedFormats" id="thumbnailAllowedFormats" />
+                <label for="thumbnailExt">
+                  Allowed file extensions
+                  <input type="text" data-key="thumbnailExt" id="thumbnailExt" />
                 </label>
               </div>
               <div class="form-group">
@@ -84,64 +72,19 @@
                   <input type="text" data-key="thumbnailHeight" id="thumbnailHeight" />
                 </label>
               </div>
-              <div class="form-group">
-                <label for="thumbnailMaxNum">
-                  Max number of thumbnails
-                  <input type="text" data-key="thumbnailMaxNum" id="thumbnailMaxNum" readonly />
-                </label>
-              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="panel panel-default">
-        <div class="panel-heading">Topic Attachments</div>
+        <div class="panel-heading">vrplayer Video</div>
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="attachmentAllowedFormats">
-                  Allowed file formats
-                  <input type="text" data-key="attachmentAllowedFormats" id="attachmentAllowedFormats" />
-                </label>
-              </div>
-              <div class="form-group">
-                <label for="attachmentMaxNum">
-                  Max number of attachments
-                  <input type="text" data-key="attachmentMaxNum" id="attachmentMaxNum" readonly />
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="panel panel-default" style="display:none;">
-        <div class="panel-heading">Hooks</div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="form-group">
-                <label for="">
-                  action:plugin.topicAttachment.thumbnail.click
-                  <textarea>console.log('action:plugin.topicAttachment.thumbnail.click');</textarea>
-                </label>
-              </div>
-              <div class="form-group">
-                <label for="">
-                  filter:plugin.topicAttachment.thumbnail.render
-                  <textarea>console.log('filter:plugin.topicAttachment.thumbnail.render');</textarea>
-                </label>
-              </div>
-              <div class="form-group">
-                <label for="">
-                  action:plugin.topicAttachment.attachments.click
-                  <textarea>console.log('action:plugin.topicAttachment.attachments.click');</textarea>
-                </label>
-              </div>
-              <div class="form-group">
-                <label for="">
-                  filter:plugin.topicAttachment.attachments.render
-                  <textarea>console.log('filter:plugin.topicAttachment.attachments.render');</textarea>
+                <label for="videoExt">
+                  Allowed video extensions
+                  <input type="text" data-key="videoExt" id="videoExt" />
                 </label>
               </div>
             </div>
@@ -152,7 +95,7 @@
   </div>
   <div class="col-lg-3">
     <div class="panel panel-default">
-      <div class="panel-heading">Topic Attachments Panel</div>
+      <div class="panel-heading">vrplayer Panel</div>
       <div class="panel-body">
         <button class="btn btn-primary" id="save">Save Settings</button>
       </div>
@@ -162,15 +105,15 @@
 
 <script>
     require(['settings'], function (settings) {
-        var plugin = {id:'topic-attachments'};
-        var wrapper = $('.topic-attachments-settings');
+        var plugin = {id:'vrplayer'};
+        var wrapper = $('.vrplayer-settings');
         settings.sync(plugin.id, wrapper, function(){
             console.log(settings.get());
         });
         $('#save').click(function(event) {
             event.preventDefault();
             settings.persist(plugin.id, wrapper, function(){
-                socket.emit('admin.settings.syncTopicAttachments');
+                socket.emit('admin.settings.syncVrplayer');
             });
         });
     });

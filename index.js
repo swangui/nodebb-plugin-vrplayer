@@ -5,23 +5,19 @@ var Settings = module.parent.require('./settings'),
     SocketPlugins = module.parent.require('./socket.io/plugins'),
     Config = {};
     Config.plugin = {
-        id: 'topic-attachments',
+        id: 'vrplayer',
         version: '1.0.0'
     };
     Config.defaults = {
-        'isThumbnailsEnabled': 1,
-        'isAttachmentsEnabled': 1,
         'isApprovalRequired': 1,
         'isAWSS3Enabled': 1,
         'AWSS3AccessKey': '',
         'AWSS3SecretKey': '',
         'AWSS3Buckect': '',
-        'thumbnailAllowedFormats': 'png,gif,jpg',
+        'thumbnailExt': 'png,gif,jpg',
         'thumbnailWidth': 32,
         'thumbnailHeight': 32,
-        'thumbnailMaxNum': 1,
-        'attachmentAllowedFormats': 'mp4,zip,png,gif,jpg',
-        'attachmentMaxNum': 1
+        'videoExt': 'mp4'
     };
     Config.global = {};
     Config.settings = new Settings(
@@ -31,17 +27,17 @@ var Settings = module.parent.require('./settings'),
     );
     
 /*
-    Meta.settings.get('topic-attachments', function(err, _settings) {
+    Meta.settings.get('vrplayer', function(err, _settings) {
         console.log(_settings);
     });
 //*/
 
-    SocketAdmin.settings.syncTopicAttachments = function() {
+    SocketAdmin.settings.syncVrplayer = function() {
         Config.settings.sync();
     };
 
     SocketPlugins.settings = {};
-    SocketPlugins.settings.syncClientTopicAttachments = function(socket, data, callback) {
+    SocketPlugins.settings.syncClientVrplayer = function(socket, data, callback) {
         var omitted = Config.settings.get();
         omitted.config = {};
         delete omitted.AWSS3SecretKey;
@@ -51,14 +47,14 @@ var Settings = module.parent.require('./settings'),
 
 
 
-    var topicAttachments = {
+    var vrplayer = {
         config: {},
         onLoad: function(params, callback) {
             function render(req, res, next) {
-                res.render('admin/plugins/topic-attachments', {});
+                res.render('admin/plugins/vrplayer', {});
             }
-            params.router.get('/admin/plugins/topic-attachments', params.middleware.admin.buildHeader, render);
-            params.router.get('/api/admin/plugins/topic-attachments', render);
+            params.router.get('/admin/plugins/vrplayer', params.middleware.admin.buildHeader, render);
+            params.router.get('/api/admin/plugins/vrplayer', render);
 
             callback();
         },
@@ -69,9 +65,9 @@ var Settings = module.parent.require('./settings'),
         admin: {
             menu: function(custom_header, callback) {
                 custom_header.plugins.push({
-                    "route": '/plugins/topic-attachments',
+                    "route": '/plugins/vrplayer',
                     "icon": 'fa-edit',
-                    "name": 'Topic Attachments'
+                    "name": 'vrplayer'
                 });
                 
                 callback(null, custom_header);
@@ -79,4 +75,4 @@ var Settings = module.parent.require('./settings'),
         }
     };
 
-    module.exports = topicAttachments;
+    module.exports = vrplayer;

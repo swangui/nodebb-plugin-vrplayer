@@ -1,15 +1,15 @@
 "use strict";
 
-var clientTopicAttachments = {
+var clientVrplayer = {
     loadTpl: function(settings) {
-        ajaxify.loadTemplate('attachments', function(tpl) {
+        ajaxify.loadTemplate('vrplayer', function(tpl) {
             var html = templates.parse(tpl, settings);
         
             var wait = setInterval(function(){
-                if ($('.title-container').size() === 1) {
+                if ($('.tags-container.inline-block').size() === 1) {
         
                     console.log(html);
-                    $(html).insertAfter($('.title-container'));
+                    $(html).insertBefore($('.tags-container.inline-block'));
         
                     clearTimeout(wait);
                 }
@@ -23,18 +23,18 @@ $(document).ready(function() {
         console.log('new topic captured!');
 /*
         require(['settings'], function (settings) {
-            var plugin = {id:'topic-attachments'};
+            var plugin = {id:'vrplayer'};
             settings.sync(plugin.id, null, function(){
                 console.log(settings.get());
             });
         });
 */
         socket.emit(
-           'plugins.settings.syncClientTopicAttachments',
+           'plugins.settings.syncClientVrplayer',
             null,
             function(err, settings){
             console.log(settings);
-            clientTopicAttachments.loadTpl(settings);
+            clientVrplayer.loadTpl(settings);
         });
 
     });

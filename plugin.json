@@ -1,5 +1,5 @@
 {
-    "url": "https://github.com/swangui/nodebb-plugin-topic-attachments",
+    "url": "https://github.com/swangui/nodebb-plugin-vrplayer",
     "library": "./index.js",
     "staticDirs": {
         "images": "public/images",
